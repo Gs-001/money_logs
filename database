@@ -1,0 +1,77 @@
+Expenses:
+    Inflow:
+        in_id
+        amount
+        mode
+        source
+        title
+        details
+        image
+        tags
+
+    Outflow:
+        out_id
+        amount
+        mode
+        sink
+        title
+        details
+        image
+        tags
+
+    Sink Type:
+        sink_id
+        title
+        description
+    
+    Source Type:
+        source_id
+        title
+        description
+
+    Transaction Tags:
+        tag_id
+        title
+        description
+
+    Payment Mode: (Debit / UPI / Cash / Credit)
+        mode_id
+        title
+        description
+
+    Transfer:
+        id
+        operation_type
+        amount
+
+    Operations:
+        op_id
+        title
+        description
+
+xxxxxxxxxxxxxxxxxxxxxxxxx
+    Payment handle:
+        id 
+        title
+        details
+
+
+create table inflow (in_id integer auto_increment primary key, amount integer, mode int , source integer null, title varchar(255) null, details text null, tags integer null, foreign key(mode) references payment_mode(mode_id) , foreign key(source) references source(source_id));
+
+create table outflow (out_id integer auto_increment primary key, amount integer, mode int , sink integer null, title varchar(255) null, details text null, tags integer null, foreign key(mode) references payment_mode(mode_id) , foreign key(sink) references sink(sink_id));
+
+create table sink (sink_id integer auto_increment primary key, title varchar(50) null, details text null);
+
+create table source (source_id integer auto_increment primary key, title varchar(50) null, details text null);
+
+create table tag (tag_id integer auto_increment primary key, title varchar(50) null, details text null);
+
+create table payment_mode (mode_id integer auto_increment, title varchar(255) null, details text null, primary key (mode_id));
+
+create table operation (op_id integer auto_increment primary key, title varchar(50) null, details text null);
+
+create table transfer (transfer_id integer auto_increment primary key, operation_type integer, amount integer);
+alter table transfer add foreign key(operation_type) references operation(op_id);
+    
+    
+

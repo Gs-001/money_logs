@@ -1,0 +1,197 @@
+Level 1:
+
+Users Dashboard         -  GET      /users/[user-id]/dashboard
+- Account templates       -  GET      /accont/templates
+Add Account             -  POST     /account/add
+New Records             -  POST     /records/add
+Fetch Users records     -  GET      /users/[user-id]/records
+
+
+Level 2:
+
+Fetch record receipt    -  GET      /users/[user-id]/records/[record-id]/receipt
+- User Details            -  GET      /users/[user-id]
+Fetch Stats             -  GET      /users/[user-id]/Stats
+
+------------------------------------------------------------------------------------
+
+User's dashboard
+
+GET /users/[user-id]/dashboard
+
+RESPONSE:
+
+{
+    accounts: [
+        {
+            "id": "34r23r3e",
+            "title": "Cash",
+            "amount": 2342
+        },
+        {
+            "id": "34r23r3e",
+            "title": "SBI",
+            "amount": 212
+        },
+    ],
+
+    cards: [
+        {
+            "title": "Expense Structure",
+            "type": "pie-chart",
+            "description": "Last 30 days",
+            "details": {
+                "title": "All Stats",
+                "url": "/user/[user-id]/stats"
+            },
+            "content": [
+                {
+                    "title": "Clothing",
+                    "sum": "20",
+                    "color": "blue" (#HEX)
+                },
+                ...
+            ]
+        },
+        {
+            "title": "Last Records Overview",
+            "type": "last-records",
+            "description": "Last 30 days",
+            "details": {
+                "title": "All Records",
+                "url": "/user/[user-id]/records"
+            },
+            "content": [
+                {
+                    "id": "34r23r3e",
+                    "title": "Record 1 Title",
+                    "sum": 3234,
+                    "date": "26-10-72"
+                },
+                ...
+            ]
+        }
+    ]
+}
+
+-------------------------------------------------------------------------------------
+
+Add Account
+
+POST /account/add
+
+REQUEST:
+{
+    "user_id": "123h76th876t",
+    "account_details": {
+        "title": "SBI Credit Card",
+        "type": "Credit Card",
+        "currency": "INR",
+        "amount": 1231
+    }
+}
+
+RESPONSE:
+
+200 OK
+
+-------------------------------------------------------------------------------------
+
+New Records
+
+POST /records/add
+
+REQUEST:
+{
+    "user_id": "23re234r2e"
+    "record_details": {
+        "type": "income/expense/transfer",
+        "title": "Record Title",
+        "account_id": "5656",
+        "category": "Food & Drinks",
+        "amount": 1234,
+        "date": "26-10-72",
+        "receipt": (Image File),
+        "labels": ["food", "eating-out", "once in a month"]
+    }
+}
+
+-------------------------------------------------------------------------------------
+
+Fetch Users records
+
+GET      /users/[user-id]/records
+
+(Implement Pagination)
+
+RESPONSE:
+{
+    records: [
+        {
+            "title": "record title",
+            "type": "income/expense/transfer",
+            "category": "Food & Drinks",
+            "date": "26-10-99",
+            "account": {
+                "id": "78ijhy7",
+                "title": "SBI"
+            },
+            "labels": ["label1", "label2", "label3"]
+            "receipt_available": "False/True"
+        }
+
+        ...
+    ]
+}
+
+-------------------------------------------------------------------------------------
+
+Fetch record receipt
+
+GET      /users/[user-id]/records/[record-id]/receipt
+
+RESPONSE:
+
+ - Image file associated with the record ID - 
+
+
+-------------------------------------------------------------------------------------
+
+Fetch Stats
+
+GET      /users/[user-id]/stats
+
+(?) How to send extra parameters in GET request
+Extra parameters:
+    - Time duration
+
+
+RESPONSE:
+
+{
+    "sections": [
+        {
+            "title": "balance",
+            "txns_count": 342
+            "cards: [
+                {
+                    "title": "Expense Structure",
+                    "type": "pie-chart",
+                    "description": "Last 30 days",
+                    "details": {
+                        "title": "All Stats",
+                        "url": "/user/[user-id]/stats"
+                    },
+                    "content": [
+                        {
+                            "title": "Clothing",
+                            "sum": "20",
+                            "color": "blue" (#HEX)
+                        },
+                        ...
+                    ]
+                },
+            ]
+        }
+    ]
+}
