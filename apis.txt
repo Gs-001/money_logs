@@ -1,9 +1,10 @@
 Level 1:
 
 Users Dashboard         -  GET      /users/[user-id]/dashboard
-- Account templates       -  GET      /accont/templates
-Add Account             -  POST     /account/add
-New Records             -  POST     /records/add
+- Account templates       -  GET      /acconts/templates
+Add Account             -  POST     /users/[user-id]/accounts
+New Records             -  POST     /users/[user-id]/records/
+Record meta data        -  GET      /records/meta
 Fetch Users records     -  GET      /users/[user-id]/records
 
 
@@ -11,9 +12,23 @@ Level 2:
 
 Fetch record receipt    -  GET      /users/[user-id]/records/[record-id]/receipt
 - User Details            -  GET      /users/[user-id]
-Fetch Stats             -  GET      /users/[user-id]/Stats
+Fetch Stats             -  GET      /users/[user-id]/stats
 
 ------------------------------------------------------------------------------------
+
+To Do:
+    - Finalise how to process cards data
+
+    ** Next Steps
+        - Different account templates at time of adding new account
+        - User details API
+
+-------------------------------------------------------------------------------------
+
+Cards:
+    - pie-chart
+
+-------------------------------------------------------------------------------------
 
 User's dashboard
 
@@ -24,15 +39,13 @@ RESPONSE:
 {
     accounts: [
         {
-            "id": "34r23r3e",
-            "title": "Cash",
-            "amount": 2342
-        },
-        {
-            "id": "34r23r3e",
-            "title": "SBI",
-            "amount": 212
-        },
+            "id": "32r23f3"
+            "title": "SBI Credit Card",
+            "type": "Credit Card",
+            "currency": "INR",
+            "amount": 1231
+    }
+        ...
     ],
 
     cards: [
@@ -40,7 +53,7 @@ RESPONSE:
             "title": "Expense Structure",
             "type": "pie-chart",
             "description": "Last 30 days",
-            "details": {
+            "details_button": {
                 "title": "All Stats",
                 "url": "/user/[user-id]/stats"
             },
@@ -57,7 +70,7 @@ RESPONSE:
             "title": "Last Records Overview",
             "type": "last-records",
             "description": "Last 30 days",
-            "details": {
+            "details_button": {
                 "title": "All Records",
                 "url": "/user/[user-id]/records"
             },
@@ -76,13 +89,16 @@ RESPONSE:
 
 -------------------------------------------------------------------------------------
 
-Add Account
+Add Account (To be updated)
 
-POST /account/add
+POST /users/[user-id]/accounts
+
+Notes:
+- Authentication header or URL parameter for user-id
+- Or possible both (?)
 
 REQUEST:
 {
-    "user_id": "123h76th876t",
     "account_details": {
         "title": "SBI Credit Card",
         "type": "Credit Card",
@@ -91,28 +107,55 @@ REQUEST:
     }
 }
 
-RESPONSE:
 
-200 OK
+-------------------------------------------------------------------------------------
+
+Record meta data template
+
+GET /records/meta
+
+RESPONSE:
+{
+    data: {
+        labels: [
+            {
+                "id": "2ed23ewe",
+                "title": "Food"
+            },
+            ...
+        ],
+        categories: [
+            {
+                "id": "34rd23e"
+                "title": "Life and Entertainment"
+            },
+            ...
+        ]
+    }
+}
+
 
 -------------------------------------------------------------------------------------
 
 New Records
 
-POST /records/add
+POST /users/[user-id]/records/
+
+Notes:
+- Authentication header or URL parameter for user-id
+
 
 REQUEST:
 {
-    "user_id": "23re234r2e"
     "record_details": {
         "type": "income/expense/transfer",
         "title": "Record Title",
         "account_id": "5656",
-        "category": "Food & Drinks",
+        "category": "234tre34r3",
         "amount": 1234,
         "date": "26-10-72",
         "receipt": (Image File),
-        "labels": ["food", "eating-out", "once in a month"]
+        "labels": ["23erew2", "er4e2", "2s2ws"]
     }
 }
 
@@ -122,7 +165,9 @@ Fetch Users records
 
 GET      /users/[user-id]/records
 
-(Implement Pagination)
+Notes:
+- Implement Pagination
+- Sorting done on Frontend
 
 RESPONSE:
 {
@@ -130,13 +175,13 @@ RESPONSE:
         {
             "title": "record title",
             "type": "income/expense/transfer",
-            "category": "Food & Drinks",
+            "category": "234rtgf3",
             "date": "26-10-99",
             "account": {
                 "id": "78ijhy7",
                 "title": "SBI"
             },
-            "labels": ["label1", "label2", "label3"]
+            "labels": [123,323,234,234,233]
             "receipt_available": "False/True"
         }
 
@@ -161,9 +206,9 @@ Fetch Stats
 
 GET      /users/[user-id]/stats
 
-(?) How to send extra parameters in GET request
-Extra parameters:
-    - Time duration
+Notes:
+    - Time duration parameter (optional)
+    - Only pie-chart implemented for now, more to be added
 
 
 RESPONSE:
