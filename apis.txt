@@ -89,6 +89,35 @@ RESPONSE:
 
 -------------------------------------------------------------------------------------
 
+Account Meta Data
+
+GET /accounts/details
+
+Notes:
+    * account_type would be changed in the coming time so keeping the `id` field for now.
+
+RESPONSE:
+
+{
+    data: {
+        account_type: [
+            {
+                "id": 23rg2,
+                "title": "Credit Card"
+                "fields": (JSON Schema)
+            },
+            ...
+        ]
+        currencies: {
+            "INR",
+            "USD",
+            "PESO"
+        }
+    }
+}
+
+-------------------------------------------------------------------------------------
+
 Add Account (To be updated)
 
 POST /users/[user-id]/accounts
@@ -110,26 +139,41 @@ REQUEST:
 
 -------------------------------------------------------------------------------------
 
-Record meta data template
+Record meta data
 
-GET /records/meta
+GET /records/details
 
 RESPONSE:
 {
     data: {
-        labels: [
+        accounts: [
             {
-                "id": "2ed23ewe",
-                "title": "Food"
+                "id": "32r23f3"
+                "title": "SBI Credit Card",
+                "type": "Credit Card",
+                "currency": "INR",
+                "amount": 1231
             },
             ...
         ],
-        categories: [
-            {
-                "id": "34rd23e"
-                "title": "Life and Entertainment"
-            },
+
+        labels: [
+            "Food",
+            "Eating Out",
+            "swiggy",
             ...
+        ],
+
+        categories: [
+            "Life and Entertainment",
+            "Food & Drinks",
+            ...
+        ],
+
+        "record_types": [
+            "income",
+            "expense",
+            "transfer"
         ]
     }
 }
@@ -151,11 +195,11 @@ REQUEST:
         "type": "income/expense/transfer",
         "title": "Record Title",
         "account_id": "5656",
-        "category": "234tre34r3",
+        "category": "Food & Drinks",
         "amount": 1234,
         "date": "26-10-72",
         "receipt": (Image File),
-        "labels": ["23erew2", "er4e2", "2s2ws"]
+        "labels": [food, drinks, last-txn]
     }
 }
 
@@ -171,17 +215,14 @@ Notes:
 
 RESPONSE:
 {
-    records: [
+    "records": [
         {
             "title": "record title",
             "type": "income/expense/transfer",
-            "category": "234rtgf3",
+            "category": "Food & Drinks",
             "date": "26-10-99",
-            "account": {
-                "id": "78ijhy7",
-                "title": "SBI"
-            },
-            "labels": [123,323,234,234,233]
+            "account_title": "SBI"
+            "labels": [food, drinks, last-txn]
             "receipt_available": "False/True"
         }
 
