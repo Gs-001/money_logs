@@ -1,0 +1,41 @@
+ul {
+    background: rgb(184, 132, 132);
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 20px;
+}
+
+li:nth-of-type(1) {flex-grow: 6;}
+li:nth-of-type(2) {flex-grow: 1;}
+li:nth-of-type(3) {flex-grow: 1;}
+li:nth-of-type(4) {flex-grow: 1;}
+
+#body {
+    display: grid;
+    grid-gap: 20px;
+}
+
+#grid-rows {
+    grid-column: 1/20;
+}
+
+#accounts {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgb(90, 59, 59);
+    grid-row: 1/2;
+    grid-column: 2/19;
+}
+
+#stats {
+    background: rgb(92, 92, 139);
+    grid-row: 2/25;
+    grid-column: 2/10;
+}
+
+#records {
+    background: rgb(112, 112, 75);
+    grid-row: 2/25;
+    grid-column: 10/19;
+}
