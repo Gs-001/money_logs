@@ -2,4 +2,8 @@ API Design:
     https://medium.com/hashmapinc/rest-good-practices-for-api-design-881439796dc9
     https://restfulapi.net/rest-architectural-constraints/
     https://restfulapi.net/resource-naming/
+
+JS:
+    Fetch over XMLHTTPRequest: https://medium.com/beginners-guide-to-mobile-web-development/the-fetch-api-2c962591f5c
+    Promises: https://web.dev/promises/#whats-all-the-fuss-about
     
