@@ -1,6 +1,7 @@
 Level 1:
 
-Users Dashboard         -  GET      /users/[user-id]/dashboard
+User Login              -  POST     /login
+Users Dashboard         -  GET      /users/[user-id]/dashboard      /dashboard
 - Account templates       -  GET      /acconts/templates
 Add Account             -  POST     /users/[user-id]/accounts
 New Records             -  POST     /users/[user-id]/records/
@@ -48,8 +49,8 @@ RESPONSE:
         ...
     ],
 
-    cards: [
-        {
+    cards: {
+        stats: {
             "title": "Expense Structure",
             "type": "pie-chart",
             "description": "Last 30 days",
@@ -66,7 +67,7 @@ RESPONSE:
                 ...
             ]
         },
-        {
+        records: {
             "title": "Last Records Overview",
             "type": "last-records",
             "description": "Last 30 days",
@@ -77,14 +78,14 @@ RESPONSE:
             "content": [
                 {
                     "id": "34r23r3e",
-                    "title": "Record 1 Title",
+                    "title": "Record 1 Title",              (! Add Category)
                     "sum": 3234,
                     "date": "26-10-72"
                 },
                 ...
             ]
         }
-    ]
+    }
 }
 
 -------------------------------------------------------------------------------------
