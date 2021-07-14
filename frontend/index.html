@@ -10,17 +10,25 @@
 <body>
     <div id="nav-bar">
         <ul>
-            <li><a href="#dashboard"></a>Gurcharan Singh</li>
-            <li><a href="#new-record"></a>Add Record</li>
-            <li><a href="#account-details"></a>Account</li>
-            <li><a href="#logout"></a>Logout</li>
+            <li><a href="#">Gurcharan Singh</a></li>
+            <li><a href="add-record.html">Add Record</a></li>
+            <li><a href="user-profile.html">Account</a></li>
+            <li><a href="#logout">Logout</a></li>
         </ul>
     </div>
     <div id="body">
-        <div id="grid-rows"></div>
-        <div id="accounts">Accounts</div>
-        <div id="stats">Stats</div>
-        <div id="records">Records</div>
+        <div id="accounts"><ul id="accounts-list"></ul><a href="add-account.html">Add Accounts</a></div>
+
+        <div id="stats"><a href="all-stats.html">All Stats</a></div>
+
+        <div id="records">
+            <h4> Last Records Overview</h4>
+            <h6>Last 30 Days</h6>
+            <div id="records">
+                <ul id="records-list"></ul>
+            </div>
+            <a href="all-records.html">All Records</a>
+        </div>
     </div>
     
     <script src="index.js"></script>
