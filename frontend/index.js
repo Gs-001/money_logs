@@ -32,18 +32,6 @@ function populateAccountsSection(data) {
     }
 }
 
-
-fetch('https://cb183d86-76a6-43d7-aed2-fb3e2e490742.mock.pstmn.io/dashboard')
-    .then(function (response){
-        return response.json()
-    })
-    .then(function (data) {
-        // console.log(data)
-        populate_dashboard(data)
-    }).catch(function (err) {
-        console.log("something went wrong!: ", err)
-    })
-
 function populateStatsSection(data) {
     var ctx = document.getElementById("myChart");
     ctx.style.width = 100;
@@ -81,3 +69,14 @@ function populateStatsSection(data) {
       }
     });
 }
+
+fetch('https://cb183d86-76a6-43d7-aed2-fb3e2e490742.mock.pstmn.io/dashboard')
+    .then(function (response){
+        return response.json()
+    })
+    .then(function (data) {
+        // console.log(data)
+        populate_dashboard(data)
+    }).catch(function (err) {
+        console.log("something went wrong!: ", err)
+    })
