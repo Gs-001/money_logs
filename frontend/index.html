@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div id="nav-bar">
@@ -19,10 +20,17 @@
     <div id="body">
         <div id="accounts"><ul id="accounts-list"></ul><a href="add-account.html">Add Accounts</a></div>
 
-        <div id="stats"><a href="all-stats.html">All Stats</a></div>
+        <div id="stats">
+            <h4>Expense Structure</h4>
+            <h6>Last 30 Days</h6>
+            <div id="stats-card" style="height: 300px; width: 300px;">
+                <canvas id="myChart" width="200" height="200"></canvas>
+            </div>
+            <a href="all-stats.html">All Stats</a>
+        </div>
 
         <div id="records">
-            <h4> Last Records Overview</h4>
+            <h4>Last Records Overview</h4>
             <h6>Last 30 Days</h6>
             <div id="records">
                 <ul id="records-list"></ul>

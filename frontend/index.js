@@ -1,6 +1,7 @@
 function populate_dashboard(data) {
     populateAccountsSection(data)
     populateRecordsSection(data["cards"]["records"])
+    populateStatsSection(data["cards"]["stats"])
 }
 
 function populateRecordsSection(data) {
@@ -42,3 +43,41 @@ fetch('https://cb183d86-76a6-43d7-aed2-fb3e2e490742.mock.pstmn.io/dashboard')
     }).catch(function (err) {
         console.log("something went wrong!: ", err)
     })
+
+function populateStatsSection(data) {
+    var ctx = document.getElementById("myChart");
+    ctx.style.width = 100;
+    ctx.style.height = 100;
+    var legend = []
+    var dataPoints = []
+    data.content.forEach(element => legend.push(element.title))
+    data.content.forEach(element => dataPoints.push(element.sum))
+
+    var myChart = new Chart(ctx, {
+      type: "pie",
+      data: {
+        labels: legend,
+        datasets: [
+          {
+            label: "Expense Overvview",
+            data: dataPoints,
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+              "rgba(255, 206, 86, 0.2)",
+              "rgba(75, 192, 192, 0.2)",
+              "rgba(153, 102, 255, 0.2)"
+            ],
+            borderColor: [
+              "rgba(255, 99, 132, 1)",
+              "rgba(54, 162, 235, 1)",
+              "rgba(255, 206, 86, 1)",
+              "rgba(75, 192, 192, 1)",
+              "rgba(153, 102, 255, 1)",
+            ],
+            borderWidth: 1
+          }
+        ]
+      }
+    });
+}
