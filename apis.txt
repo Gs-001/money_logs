@@ -209,10 +209,12 @@ REQUEST:
 Fetch Users records
 
 GET      /users/[user-id]/records
+GET      /records
 
 Notes:
 - Implement Pagination
 - Sorting done on Frontend
+- Record title can be empty
 
 RESPONSE:
 {
@@ -222,7 +224,8 @@ RESPONSE:
             "type": "income/expense/transfer",
             "category": "Food & Drinks",
             "date": "26-10-99",
-            "account_title": "SBI"
+            "account_title": "SBI",
+            "amount": 1000,
             "labels": [food, drinks, last-txn]
             "receipt_available": "False/True"
         }
