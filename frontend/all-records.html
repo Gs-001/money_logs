@@ -5,13 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+
 </head>
-<body>
+<body id="body">
     <h4>Nav bar here</h4>
     <h4>Records</h4>
-    <form action="#search-spi">
+    <form action="#search-api">
         <input type="text" placeholder="Text to search">
         <button type="submit">Search</button>
+        <div id="filters">
+            <form>
+                <fieldset>
+                    <legend>Filters</legend>
+
+                    <!-- <fieldset id="instant-filters"> -->
+                            <input id="instant-filter-1" type="radio" name="instant-filter" value="7D">
+                                <label for="instant-filter-1">7 Days</label>
+                            <input id="instant-filter-2" type="radio" name="instant-filter" value="30D">
+                                <label for="instant-filter-2">30 Days</label>
+                            <input id="instant-filter-3" type="radio" name="instant-filter" value="6M">
+                                <label for="instant-filter-3">6 Months</label>
+                            <input id="instant-filter-4" type="radio" name="instant-filter" value="1Y">
+                                <label for="instant-filter-4">1 Year</label>
+                            <input id="instant-filter-5" type="radio" name="instant-filter" value="*">
+                                <label for="instant-filter-5">All</label>
+                    <!-- </fieldset> -->
+                    
+                    <!-- <fieldset id="from-to" disabled>
+                        <label for="from-date">From: </label>
+                            <input id="from-date" type="date" name="" id="">
+                        <label for="to-date">To: </label>
+                            <input id="to-date" type="date" name="" id="">
+                    </fieldset> -->
+                </fieldset>
+            </form>
+
+        </div>
     </form>
     <div id="filters"></div>
     <div id="records">
