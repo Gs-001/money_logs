@@ -258,29 +258,87 @@ Notes:
 
 RESPONSE:
 
-{
-    "sections": [
+{        
+    "cards": [
         {
-            "title": "balance",
-            "txns_count": 342
-            "cards: [
+            "title": "Spending by Category",
+            "type": "pie-chart",
+            "description": "Where does my money go ?",
+            "content": [
                 {
-                    "title": "Expense Structure",
-                    "type": "pie-chart",
-                    "description": "Last 30 days",
-                    "details": {
-                        "title": "All Stats",
-                        "url": "/user/[user-id]/stats"
-                    },
-                    "content": [
-                        {
-                            "title": "Clothing",
-                            "sum": "20",
-                            "color": "blue" (#HEX)
-                        },
-                        ...
-                    ]
+                    "title": "Clothing",
+                    "sum": "30",
+                    "color": "blue"
                 },
+                {
+                    "title": "Fuel",
+                    "sum": "20",
+                    "color": "blue"
+                },
+                {
+                    "title": "Food & Drinks",
+                    "sum": "10",
+                    "color": "blue"
+                },
+                {
+                    "title": "Rent",
+                    "sum": "40",
+                    "color": "blue"
+                }
+            ]
+        },
+        {
+            "title": "Spending by Labels",
+            "type": "pie-chart",
+            "description": "Where does my money go ?",
+            "content": [
+                {
+                    "title": "Dinner",
+                    "sum": "30",
+                    "color": "blue"
+                },
+                {
+                    "title": "Swiggy",
+                    "sum": "20",
+                    "color": "red"
+                },
+                {
+                    "title": "Swiggy",
+                    "sum": "10",
+                    "color": "yellow"
+                },
+                {
+                    "title": "Dinner",
+                    "sum": "40",
+                    "color": "green"
+                }
+            ]
+        },
+        {
+            "title": "Cashflow Trends",
+            "type": "pie-chart",
+            "description": "My spending patterns",
+            "content": [
+                {
+                    "title": "Dinner",
+                    "sum": "30",
+                    "color": "blue"
+                },
+                {
+                    "title": "Swiggy",
+                    "sum": "20",
+                    "color": "red"
+                },
+                {
+                    "title": "Swiggy",
+                    "sum": "10",
+                    "color": "yellow"
+                },
+                {
+                    "title": "Dinner",
+                    "sum": "40",
+                    "color": "green"
+                }
             ]
         }
     ]
