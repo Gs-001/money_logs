@@ -1,5 +1,9 @@
 var apiResponse
 
+document.getElementsByName("instant-filter").forEach(function (radio) {
+    radio.addEventListener('click', (event) => { populateRecords(apiResponse, event.target.value) })
+})
+
 fetch("https://cb183d86-76a6-43d7-aed2-fb3e2e490742.mock.pstmn.io/records")
     .then(function (response){
         return response.json()
@@ -12,10 +16,6 @@ fetch("https://cb183d86-76a6-43d7-aed2-fb3e2e490742.mock.pstmn.io/records")
     .catch(function (err){
         console.log("something went wrong", err)
     })
-
-document.getElementsByName("instant-filter").forEach(function (radio) {
-    radio.addEventListener('click', (event) => { populateRecords(apiResponse, event.target.value) })
-})
 
 function getDatePastDays(days) {
     return dayjs().subtract(days, "d")
